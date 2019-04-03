@@ -24,6 +24,14 @@
 		529F491422509E810013F269 /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F491322509E810013F269 /* SearchViewCoordinator.swift */; };
 		529F491622509EA70013F269 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F491522509EA70013F269 /* NavigationCoordinator.swift */; };
 		529F491A2250A2ED0013F269 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F49192250A2ED0013F269 /* UIImageExtension.swift */; };
+		52A9C1E72254597D006E859F /* TraktTrendingMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C1E62254597D006E859F /* TraktTrendingMovie.swift */; };
+		52A9C1E9225459D4006E859F /* ConfigurationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C1E8225459D4006E859F /* ConfigurationUtils.swift */; };
+		52A9C1ED22545AE9006E859F /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C1EC22545AE9006E859F /* BaseService.swift */; };
+		52A9C1EF22545B0F006E859F /* URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C1EE22545B0F006E859F /* URLRequestConvertible.swift */; };
+		52A9C1F122545B40006E859F /* MovieServiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C1F022545B40006E859F /* MovieServiceRouter.swift */; };
+		52A9C1F322545CD1006E859F /* MoviedbDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C1F222545CD1006E859F /* MoviedbDetail.swift */; };
+		52A9C1F522545E8A006E859F /* TracktService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C1F422545E8A006E859F /* TracktService.swift */; };
+		52A9C1F722545EA3006E859F /* MoviedbService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C1F622545EA3006E859F /* MoviedbService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +66,14 @@
 		529F491322509E810013F269 /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
 		529F491522509EA70013F269 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		529F49192250A2ED0013F269 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		52A9C1E62254597D006E859F /* TraktTrendingMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraktTrendingMovie.swift; sourceTree = "<group>"; };
+		52A9C1E8225459D4006E859F /* ConfigurationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationUtils.swift; sourceTree = "<group>"; };
+		52A9C1EC22545AE9006E859F /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		52A9C1EE22545B0F006E859F /* URLRequestConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestConvertible.swift; sourceTree = "<group>"; };
+		52A9C1F022545B40006E859F /* MovieServiceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieServiceRouter.swift; sourceTree = "<group>"; };
+		52A9C1F222545CD1006E859F /* MoviedbDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviedbDetail.swift; sourceTree = "<group>"; };
+		52A9C1F422545E8A006E859F /* TracktService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracktService.swift; sourceTree = "<group>"; };
+		52A9C1F622545EA3006E859F /* MoviedbService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviedbService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +115,7 @@
 		529F48DC225093C10013F269 /* MoviesRank */ = {
 			isa = PBXGroup;
 			children = (
+				52A9C1EA22545ABB006E859F /* Core */,
 				529F49172250A2C30013F269 /* common */,
 				529F48FF2250997C0013F269 /* Views */,
 				529F48FE2250996F0013F269 /* Models */,
@@ -135,6 +152,8 @@
 		529F48FE2250996F0013F269 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				52A9C1E62254597D006E859F /* TraktTrendingMovie.swift */,
+				52A9C1F222545CD1006E859F /* MoviedbDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,8 +208,29 @@
 			isa = PBXGroup;
 			children = (
 				529F49192250A2ED0013F269 /* UIImageExtension.swift */,
+				52A9C1E8225459D4006E859F /* ConfigurationUtils.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		52A9C1EA22545ABB006E859F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				52A9C1EB22545AC2006E859F /* Networking */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		52A9C1EB22545AC2006E859F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				52A9C1EC22545AE9006E859F /* BaseService.swift */,
+				52A9C1EE22545B0F006E859F /* URLRequestConvertible.swift */,
+				52A9C1F022545B40006E859F /* MovieServiceRouter.swift */,
+				52A9C1F422545E8A006E859F /* TracktService.swift */,
+				52A9C1F622545EA3006E859F /* MoviedbService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,13 +336,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A9C1E72254597D006E859F /* TraktTrendingMovie.swift in Sources */,
+				52A9C1F722545EA3006E859F /* MoviedbService.swift in Sources */,
 				529F490A22509CDD0013F269 /* Startable.swift in Sources */,
 				529F490F22509D860013F269 /* SearchViewController.swift in Sources */,
 				529F490C22509D150013F269 /* CoordinatorProtocol.swift in Sources */,
+				52A9C1ED22545AE9006E859F /* BaseService.swift in Sources */,
+				52A9C1F122545B40006E859F /* MovieServiceRouter.swift in Sources */,
 				529F491A2250A2ED0013F269 /* UIImageExtension.swift in Sources */,
+				52A9C1F322545CD1006E859F /* MoviedbDetail.swift in Sources */,
+				52A9C1F522545E8A006E859F /* TracktService.swift in Sources */,
 				529F491222509E650013F269 /* HomeViewCoordinator.swift in Sources */,
+				52A9C1EF22545B0F006E859F /* URLRequestConvertible.swift in Sources */,
 				529F4901225099A00013F269 /* TabbarCoordinator.swift in Sources */,
 				529F491422509E810013F269 /* SearchViewCoordinator.swift in Sources */,
+				52A9C1E9225459D4006E859F /* ConfigurationUtils.swift in Sources */,
 				529F48DE225093C10013F269 /* AppDelegate.swift in Sources */,
 				5214B61D225192DA0069DBAC /* MovieCollectionViewCell.swift in Sources */,
 				529F491622509EA70013F269 /* NavigationCoordinator.swift in Sources */,
