@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias MoviedbDetailArray = [MoviedbDetail]
+
 public struct MoviedbDetail: Codable {
     public let movieResults: [MovieResults]
     

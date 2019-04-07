@@ -19,6 +19,7 @@ typealias Parameters = [String: Any]?
 enum MovieServiceRouter: URLRequestConvertible {
     case getTrendingMovies(page: Int)
     case getDetailedInfo(movieId: String)
+    case search(query: String)
     
     var path: String {
         switch self {
@@ -27,6 +28,8 @@ enum MovieServiceRouter: URLRequestConvertible {
         case .getDetailedInfo(let movieId):
             let moviedbVersion = ConfigurationUtils.valueFromDictionary(.moviedbVersionAPI)
             return "\(moviedbVersion)/find/\(movieId)"
+        case .search:
+            return "search"
         }
     }
     
@@ -40,13 +43,15 @@ enum MovieServiceRouter: URLRequestConvertible {
                      "language": "en-US",
                      "external_source": "imdb_id"
             ]
+        case .search(let query):
+            return ["type": "movie", "query": query]
         }
     }
     
     
     func asURLRequest() throws -> URLRequest {
         switch self {
-        case .getTrendingMovies:
+        case .getTrendingMovies, .search:
             let tracktBaseUrl = ConfigurationUtils.valueFromDictionary(.tracktBaseUrl)
             let url = URL(fileURLWithPath: tracktBaseUrl)
             return request(baseURL: url, path: path, method: .get, parameters: parameters)
@@ -70,7 +75,7 @@ enum MovieServiceRouter: URLRequestConvertible {
         }
         
         switch self {
-        case .getTrendingMovies:
+        case .getTrendingMovies, .search:
             let apiVersion = ConfigurationUtils.valueFromDictionary(.tracktVersionAPI)
             let apiKey = ConfigurationUtils.valueFromDictionary(.tracktAPIkey)
             urlRequest.setValue(apiVersion, forHTTPHeaderField: "trakt-api-version")

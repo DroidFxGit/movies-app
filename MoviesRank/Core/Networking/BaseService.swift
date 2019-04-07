@@ -15,6 +15,7 @@ enum ServiceResponse<T> {
 
 enum ServiceError: Error {
     case badrequest
+    case unknown
 }
 
 enum StatusCode: Int {

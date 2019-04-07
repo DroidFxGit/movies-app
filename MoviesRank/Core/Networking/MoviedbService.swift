@@ -10,4 +10,11 @@ import Foundation
 
 class MoviedbService: BaseService<MoviedbDetail> {
     
+    func getMovieDetail(id: String, completion: @escaping completionHandler<MoviedbDetail>) {
+        guard let request = try? MovieServiceRouter.getDetailedInfo(movieId: id).asURLRequest() else {
+            completion(.failure(error: ServiceError.badrequest))
+            return
+        }
+        perform(request: request, completion: completion)
+    }
 }

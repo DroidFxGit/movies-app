@@ -10,4 +10,11 @@ import Foundation
 
 class TracktService: BaseService<TraktTrendingMovieArray> {
     
+    func getTrendingMovies(page: Int, completion: @escaping completionHandler<TraktTrendingMovieArray>) {
+        guard let request = try? MovieServiceRouter.getTrendingMovies(page: page).asURLRequest() else {
+            completion(.failure(error: ServiceError.badrequest))
+            return
+        }
+        perform(request: request, completion: completion)
+    }
 }

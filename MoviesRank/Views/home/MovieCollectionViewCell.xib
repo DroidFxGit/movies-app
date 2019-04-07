@@ -76,6 +76,10 @@
             <size key="customSize" width="325" height="109"/>
             <connections>
                 <outlet property="containerView" destination="duL-Wy-TKI" id="It6-Yb-vwW"/>
+                <outlet property="overviewLabel" destination="85g-bP-hrE" id="49p-gt-j0b"/>
+                <outlet property="posterImageView" destination="jKe-SQ-4eD" id="7o3-tG-mmM"/>
+                <outlet property="titleMovieLabel" destination="7dV-bG-tAU" id="vgN-HN-PON"/>
+                <outlet property="yearLabel" destination="is0-s4-Iie" id="91L-zv-4cw"/>
             </connections>
             <point key="canvasLocation" x="335.50724637681162" y="172.76785714285714"/>
         </collectionViewCell>
