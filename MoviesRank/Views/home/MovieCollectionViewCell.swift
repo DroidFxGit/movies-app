@@ -16,12 +16,24 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
+    fileprivate let imageBaseUrl = "https://image.tmdb.org/t/p/w200"
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    func configure(model: MoviedbDetail) {
+        configureAppearance()
+        
+        titleMovieLabel.text = model.movieResults[0].title
+        yearLabel.text = model.movieResults[0].date
+        overviewLabel.text = model.movieResults[0].overview
+        
+        let imageUrl = imageBaseUrl + model.movieResults[0].posterPath
+        posterImageView.imageFromUrl(url: imageUrl, placeholderImage: "placeholder-movie")
+    }
 
-    func configureAppereance() {
+    private func configureAppearance() {
         self.containerView.layer.cornerRadius = 8.0
         self.containerView.layer.borderWidth = 1.0
         self.containerView.layer.borderColor = UIColor.clear.cgColor

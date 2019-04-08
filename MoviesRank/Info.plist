@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>tracktBaseUrl</key>
+    <string>https://api.trakt.tv</string>
+    <key>tracktAPIkey</key>
+    <string>b7ceeffb48af5b83d949efd028df8c4a61b9b32e5ccc3bf7bce7630b20e97867</string>
+    <key>tracktVersionAPI</key>
+    <string>2</string>
+    <key>moviedbBaseUrl</key>
+    <string>https://api.themoviedb.org</string>
+    <key>moviedbAPIkey</key>
+    <string>8dbee908a2c3e5fc9079148cde1f303e</string>
+    <key>moviedbVersionAPI</key>
+    <string>3</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

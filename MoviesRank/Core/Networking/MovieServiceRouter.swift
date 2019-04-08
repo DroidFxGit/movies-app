@@ -63,16 +63,14 @@ enum MovieServiceRouter: URLRequestConvertible {
     }
     
     private func request(baseURL: URL, path: String, method: HTTPMethod, parameters: Parameters=nil) -> URLRequest {
-        var urlRequest = URLRequest(url: baseURL.appendingPathComponent(path))
+        var components = URLComponents(url: baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: true)!
+        components.queryItems = parameters?.map({ (key, value) -> URLQueryItem in
+            return URLQueryItem(name: key, value: "\(value)")
+        })
+        
+        var urlRequest = URLRequest(url: components.url!)
         urlRequest.httpMethod = method.rawValue
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        if let parameters = parameters {
-            let urlParams = parameters.compactMap({ (key, value) -> String in
-                return "\(key)=\(value)"
-            }).joined(separator: "&")
-            urlRequest = URLRequest(url: baseURL.appendingPathComponent(path + urlParams))
-        }
         
         switch self {
         case .getTrendingMovies, .search:

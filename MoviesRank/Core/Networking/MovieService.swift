@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias completionHandlerMovies<T, S> = (ServiceResponse<T>, ServiceResponse<S>?) -> Void
+typealias completionHandlerMovies<T, S> = (ServiceResponse<T>?, ServiceResponse<S>) -> Void
 
 class MovieService {
     
@@ -22,21 +22,23 @@ class MovieService {
             guard let strongSelf = self else { return }
             switch response {
             case .success(let moviesArray):
+                print("response movies titles: \(moviesArray)")
                 strongSelf.handleRequestQueue(trendingMovies: moviesArray, completion: completion)
             case .failure(let error):
-                completion(.failure(error: error), nil)
+                completion(nil, .failure(error: error))
             }
         }
     }
     
     private func handleRequestQueue(trendingMovies: TraktTrendingMovieArray, completion: @escaping completionHandlerMovies<TraktTrendingMovieArray, MoviedbDetailArray>) {
         
+        movieDetailArray = []
         let idArray: [String] = trendingMovies.map { $0.movie.ids.imdb ?? "" }
         let backgroundQueue = DispatchQueue.global(qos: .default)
         let group = DispatchGroup()
         
         if idArray.count == 0 {
-            completion(.failure(error: ServiceError.unknown), nil)
+            completion(nil, .failure(error: ServiceError.unknown))
             return
         }
         
@@ -49,7 +51,7 @@ class MovieService {
                     case .success(let movieDetail):
                         strongSelf.movieDetailArray.append(movieDetail)
                     case .failure(let error):
-                        completion(.failure(error: error), nil)
+                        completion(nil, .failure(error: error))
                     }
                     group.leave()
                 })
@@ -61,7 +63,7 @@ class MovieService {
             if strongSelf.movieDetailArray.count > 0 {
                 completion(.success(response: trendingMovies), .success(response: strongSelf.movieDetailArray))
             } else {
-                completion(.failure(error: ServiceError.unknown), nil)
+                completion(nil, .failure(error: ServiceError.unknown))
             }
         }
         
