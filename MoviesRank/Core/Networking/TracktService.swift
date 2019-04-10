@@ -17,4 +17,12 @@ class TracktService: BaseService<TraktTrendingMovieArray> {
         }
         perform(request: request, completion: completion)
     }
+    
+    func searchMovie(with query: String, completion: @escaping completionHandler<TraktTrendingMovieArray>) {
+        guard let request = try? MovieServiceRouter.search(query: query).asURLRequest() else {
+            completion(.failure(error: ServiceError.badrequest))
+            return
+        }
+        perform(request: request, completion: completion)
+    }
 }

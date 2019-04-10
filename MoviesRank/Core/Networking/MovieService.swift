@@ -30,6 +30,19 @@ class MovieService {
         }
     }
     
+    func searchMovie(with query: String, completion: @escaping completionHandlerMovies<TraktTrendingMovieArray, MoviedbDetailArray>) {
+        tracktService.searchMovie(with: query) { [weak self] response in
+            guard let strongSelf = self else { return }
+            switch response {
+            case .success(let moviesArray):
+                print("response movies titles: \(moviesArray)")
+                strongSelf.handleRequestQueue(trendingMovies: moviesArray, completion: completion)
+            case .failure(let error):
+                completion(nil, .failure(error: error))
+            }
+        }
+    }
+    
     private func handleRequestQueue(trendingMovies: TraktTrendingMovieArray, completion: @escaping completionHandlerMovies<TraktTrendingMovieArray, MoviedbDetailArray>) {
         
         movieDetailArray = []
@@ -51,7 +64,12 @@ class MovieService {
                     case .success(let movieDetail):
                         strongSelf.movieDetailArray.append(movieDetail)
                     case .failure(let error):
-                        completion(nil, .failure(error: error))
+                        //keep going with queue unless error is different
+                        if case ServiceError.badrequest = error {
+                            break
+                        } else {
+                            completion(nil, .failure(error: error))
+                        }
                     }
                     group.leave()
                 })

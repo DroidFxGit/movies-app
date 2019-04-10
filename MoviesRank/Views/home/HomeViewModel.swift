@@ -55,6 +55,26 @@ class HomeViewModel {
         }
     }
     
+    func search(with query: String) {
+        if isFetching {
+            return
+        }
+        
+        isFetching = true
+        service.searchMovie(with: query) { [weak self] (_, detailedResponse) in
+            guard let strongSelf = self else { return }
+            strongSelf.isFetching = false
+            
+            switch detailedResponse {
+            case .success(let response):
+                strongSelf.movies = response
+                print("number of items: \(strongSelf.movies.count)")
+            case .failure(let error):
+                strongSelf.delegate?.didShowError(error: error)
+            }
+        }
+    }
+    
     func getMovie(at index: IndexPath) -> MoviedbDetail {
         return movies[index.row]
     }

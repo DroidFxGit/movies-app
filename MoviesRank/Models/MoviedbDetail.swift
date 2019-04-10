@@ -19,9 +19,9 @@ public struct MoviedbDetail: Codable {
 }
 
 public struct MovieResults: Codable {
-    public let title: String
-    public let date: String
-    public let overview: String
+    public let title: String?
+    public let date: String?
+    public let overview: String?
     public let posterPath: String
     
     enum CodingKeys: String, CodingKey {

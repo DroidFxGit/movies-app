@@ -25,12 +25,14 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func configure(model: MoviedbDetail) {
         configureAppearance()
         
-        titleMovieLabel.text = model.movieResults[0].title
-        yearLabel.text = model.movieResults[0].date
-        overviewLabel.text = model.movieResults[0].overview
-        
-        let imageUrl = imageBaseUrl + model.movieResults[0].posterPath
-        posterImageView.imageFromUrl(url: imageUrl, placeholderImage: "placeholder-movie")
+        if model.movieResults.count > 0 {
+            titleMovieLabel.text = model.movieResults[0].title ?? ""
+            yearLabel.text = model.movieResults[0].date ?? ""
+            overviewLabel.text = model.movieResults[0].overview ?? ""
+            
+            let imageUrl = imageBaseUrl + model.movieResults[0].posterPath
+            posterImageView.imageFromUrl(url: imageUrl, placeholderImage: "placeholder-movie")
+        }
     }
 
     private func configureAppearance() {

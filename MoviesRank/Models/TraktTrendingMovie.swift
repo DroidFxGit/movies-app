@@ -11,7 +11,7 @@ import Foundation
 typealias TraktTrendingMovieArray = [TraktTrendingMovie]
 
 public struct TraktTrendingMovie: Codable {
-    public let watchers: Int
+//    public let watchers: Int
     public let movie: TraktMovie
 }
 

@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="MoviesRank" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="hTV-32-vqA" id="8Am-rU-gix"/>
+                <outlet property="emptyView" destination="QPg-us-wN1" id="eob-eD-YWW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,6 +22,34 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPg-us-wN1">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search-main" translatesAutoresizingMaskIntoConstraints="NO" id="o9M-lt-6A6">
+                            <rect key="frame" x="122.5" y="185" width="130" height="130"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="130" id="Cz2-m3-8gs"/>
+                                <constraint firstAttribute="height" constant="130" id="ghU-vs-ve6"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results yet, please do a search" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJQ-rM-LT5">
+                            <rect key="frame" x="60.5" y="323" width="254.5" height="51"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="51" id="k4L-g4-urQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="o9M-lt-6A6" firstAttribute="top" secondItem="QPg-us-wN1" secondAttribute="top" constant="185" id="37Z-zb-AFD"/>
+                        <constraint firstItem="gJQ-rM-LT5" firstAttribute="centerX" secondItem="o9M-lt-6A6" secondAttribute="centerX" id="LmZ-2Q-0DO"/>
+                        <constraint firstItem="gJQ-rM-LT5" firstAttribute="centerX" secondItem="QPg-us-wN1" secondAttribute="centerX" id="uW2-Tn-AYn"/>
+                        <constraint firstItem="gJQ-rM-LT5" firstAttribute="top" secondItem="o9M-lt-6A6" secondAttribute="bottom" constant="8" id="y6F-QE-SwC"/>
+                    </constraints>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hTV-32-vqA">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,13 +63,20 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QPg-us-wN1" secondAttribute="bottom" id="Gu1-ZW-va5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QPg-us-wN1" secondAttribute="trailing" id="NCk-D2-14W"/>
                 <constraint firstItem="hTV-32-vqA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="O27-JV-DfU"/>
                 <constraint firstItem="hTV-32-vqA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RUq-da-eDd"/>
+                <constraint firstItem="QPg-us-wN1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qYU-Td-ErM"/>
+                <constraint firstItem="QPg-us-wN1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qgR-AB-cu1"/>
                 <constraint firstItem="hTV-32-vqA" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rSL-h2-AMV"/>
                 <constraint firstAttribute="bottom" secondItem="hTV-32-vqA" secondAttribute="bottom" id="u8V-g8-gpn"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
+            <point key="canvasLocation" x="136.80000000000001" y="152.47376311844079"/>
         </view>
     </objects>
+    <resources>
+        <image name="search-main" width="45" height="45"/>
+    </resources>
 </document>
